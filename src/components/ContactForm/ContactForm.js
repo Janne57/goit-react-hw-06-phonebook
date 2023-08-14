@@ -54,6 +54,9 @@ const contacts = useSelector(getContact);
 
   const handleSubmit = evt => {
     evt.preventDefault();
+    console.log('name submit', evt.currentTarget.elements.name.value);
+    console.log('number submit', evt.currentTarget.elements.number.value);
+
     if (!name.trim()) {
       return;
     }
@@ -62,8 +65,8 @@ const contacts = useSelector(getContact);
           id: nanoid(), 
           // name,
           // number,
-          name: name,
-          number: number,
+          name,
+          number,
         };
 
         if (contacts.find(
@@ -86,8 +89,10 @@ console.log('contact contacForms', contact);
     //   localStorage.setItem("contacts", JSON.stringify(contacts))
     // );
     // onSubmit({ name, number });
-    setName('');
-    setNumber('');
+    // setName('');
+    // setNumber('');
+    evt.currentTarget.reset();
+    // evt.currentTarget.elements.number.value.reset();
   };
 
   
