@@ -15,7 +15,7 @@ import {
   
   import { configureStore } from "@reduxjs/toolkit";
   // import  contactsReducer from './contactSlice';
-  import  contactSlice from './contactSlice.js';
+  import contactSlice from './contactSlice.js';
 
 // export default configureStore({
 //   reducer: {
