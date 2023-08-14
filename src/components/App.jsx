@@ -1,10 +1,10 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import Contacts from './/Contacts/Contacts.js';
 import ContactForm from './ContactForm/ContactForm.js';
 // import Filter from './Filter/Filter.js';
 // import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from './redux/contactSlice.js';
+// import { addContact } from './redux/contactSlice.js';
 import { getContact } from './redux/selectors';
 import { getFilter } from './redux/selectors';
 
@@ -29,12 +29,12 @@ const App = () => {
   console.log('contacts', contacts);
 
   // const [filter, setFilter] = useState('');
-  useEffect(() => {
-    const contactName = JSON.parse(localStorage.getItem('contacts')) ?? [];
-    if (contactName) {
-      dispatch(addContact(contactName));
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // const contactName = JSON.parse(localStorage.getItem('contacts')) ?? [];
+  //   if (contacts) {
+  //     dispatch(addContact(contacts));
+  //   }
+  // }, []);
 
   // useEffect(() => {
   //   localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -70,13 +70,15 @@ const App = () => {
       contact.name.includes(normalizedFilter)
       // contact.name.toLowerCase().includes(normalizedFilter)
     );
+    // return contacts;
+
   };
 
-  // const deleteContact = oldContactId => {
-  //   setContacts(prevContacts =>
-  //     prevContacts.filter(contact => contact.id !== oldContactId)
-  //   );
-  // };
+  // // const deleteContact = oldContactId => {
+  // //   setContacts(prevContacts =>
+  // //     prevContacts.filter(contact => contact.id !== oldContactId)
+  // //   );
+  // // };
 
   const visibleContact = getVisibleContact();
 

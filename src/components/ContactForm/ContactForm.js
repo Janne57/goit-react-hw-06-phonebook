@@ -35,6 +35,10 @@ const contacts = useSelector(getContact);
  const handleChange = evt => {
     const { name, value } = evt.currentTarget;
 
+    console.log('name', name);
+    console.log('value', value);
+
+
     switch (name) {
       case 'name':
         setName(value);
@@ -69,6 +73,11 @@ const contacts = useSelector(getContact);
               return alert(`${name} is already in contacts.`);
             } else {
               dispatch(addContact(contact));
+// dispatch(addContact(evt.currentTarget.value))
+// console.log('evt.currentTarget.value', evt.currentTarget.name.value)
+// console.log('evt.currentTarget.value', evt.currentTarget.number.value)
+console.log('contact contacForms', contact);
+
               // setContacts([...contacts, contact]);
             }
 

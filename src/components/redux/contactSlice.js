@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 export const contactSlice = createSlice({
   name: 'contact',
   initialState: {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Jane Fox', number: '123-45-67' },
+    ],
     filter: '',
   },
   reducers: {
