@@ -6,7 +6,7 @@ import ContactForm from './ContactForm/ContactForm.js';
 import { useSelector } from 'react-redux';
 // import { addContact } from './redux/contactSlice.js';
 import { getContact } from './redux/selectors';
-import { getFilter } from './redux/selectors';
+// import { getFilter } from './redux/selectors';
 
 // const initialContacts = [
 //   { id: 'id-1', name: 'Jane Fox', number: '123-45-67' },
