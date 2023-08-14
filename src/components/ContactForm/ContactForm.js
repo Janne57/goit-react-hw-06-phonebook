@@ -1,13 +1,36 @@
 import { useState } from 'react';
 import React from 'react';
 import css from './ContactForm.module.css';
-import PropTypes from 'prop-types';
-// import { nanoid } from 'nanoid';
+// import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContact } from '../redux/selectors.js'
+import { nanoid } from 'nanoid';
+import addContact from '../redux/contactSlice.js'
 
-const ContactForm = ({onSubmit}) => {
 
+const ContactForm = () => {
+const dispatch = useDispatch();
 const [name, setName] = useState('');
 const [number, setNumber ] = useState('');
+const contacts = useSelector(getContact);
+ // const addContact = ({ name, number }) => {
+  //   const contact = {
+  //     id: nanoid(), 
+  //     name,
+  //     number,
+  //   };
+
+  //   if (
+  //     contacts.find(
+  //       contact => contact.name.toLowerCase() === name.toLowerCase()
+  //     )
+  //   ) {
+  //     return alert(`${name} is already in contacts.`);
+  //   } else {
+  //     setContacts(prevContacts => [...prevContacts, contact]);
+  //     // setContacts([...contacts, contact]);
+  //   }
+  // };
 
  const handleChange = evt => {
     const { name, value } = evt.currentTarget;
@@ -27,8 +50,33 @@ const [number, setNumber ] = useState('');
 
   const handleSubmit = evt => {
     evt.preventDefault();
-   
-    onSubmit({ name, number });
+    if (!name.trim()) {
+      return;
+    }
+
+    const contact = {
+          id: nanoid(), 
+          // name,
+          // number,
+          name: name,
+          number: number,
+        };
+
+        if (contacts.find(
+                contact => contact.name.toLowerCase() === name.toLowerCase()
+              )
+            ) {
+              return alert(`${name} is already in contacts.`);
+            } else {
+              dispatch(addContact(contact));
+              // setContacts([...contacts, contact]);
+            }
+
+
+   //   .then((contacts) =>
+    //   localStorage.setItem("contacts", JSON.stringify(contacts))
+    // );
+    // onSubmit({ name, number });
     setName('');
     setNumber('');
   };
@@ -67,8 +115,8 @@ const [number, setNumber ] = useState('');
 
 export default ContactForm;
 
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
+// ContactForm.propTypes = {
+//   onSubmit: PropTypes.func.isRequired,
+// };
 
 

@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Contacts from './/Contacts/Contacts.js';
 import ContactForm from './ContactForm/ContactForm.js';
-import Filter from './Filter/Filter.js';
-import { nanoid } from 'nanoid';
+// import Filter from './Filter/Filter.js';
+// import { nanoid } from 'nanoid';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from './redux/contactSlice.js';
+import { getContact } from './redux/selectors';
+import { getFilter } from './redux/selectors';
 
 // const initialContacts = [
 //   { id: 'id-1', name: 'Jane Fox', number: '123-45-67' },
@@ -12,82 +16,87 @@ import { nanoid } from 'nanoid';
 // ];
 
 const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    return (
-      // JSON.parse(localStorage.getItem('contacts') || initialContacts) ?? []
-      JSON.parse(localStorage.getItem('contacts')) ?? []
-    );
-  });
-  const [filter, setFilter] = useState('');
+  const dispatch = useDispatch();
+  // const contacts = useSelector(initialContacts);
+  const contacts = useSelector(getContact);
+  const filter = useSelector(getFilter);
+  // const [contacts, setContacts] = useState(() => {
+  //   return (
+  //     // JSON.parse(localStorage.getItem('contacts') || initialContacts) ?? []
+  //     dispatch(addContact(JSON.parse(localStorage.getItem('contacts')) ?? []))
+  //   );
+  // });
+  console.log('contacts', contacts);
 
+  // const [filter, setFilter] = useState('');
   useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const addContact = ({ name, number }) => {
-    const contact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-
-    if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase()
-      )
-    ) {
-      return alert(`${name} is already in contacts.`);
-    } else {
-      setContacts(prevContacts => [...prevContacts, contact]);
-      // setContacts([...contacts, contact]);
+    const contactName = JSON.parse(localStorage.getItem('contacts')) ?? [];
+    if (contactName) {
+      dispatch(addContact(contactName));
     }
-  };
+  }, [dispatch]);
 
-  const changeFilter = evt => {
-    setFilter(evt.currentTarget.value);
-  };
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
+
+  // const addContact = ({ name, number }) => {
+  //   const contact = {
+  //     id: nanoid(),
+  //     name,
+  //     number,
+  //   };
+
+  //   if (
+  //     contacts.find(
+  //       contact => contact.name.toLowerCase() === name.toLowerCase()
+  //     )
+  //   ) {
+  //     return alert(`${name} is already in contacts.`);
+  //   } else {
+  //     setContacts(prevContacts => [...prevContacts, contact]);
+  //     // setContacts([...contacts, contact]);
+  //   }
+  // };
+
+  // const changeFilter = evt => {
+  //   setFilter(evt.currentTarget.value);
+  // };
 
   const getVisibleContact = () => {
     const normalizedFilter = filter.toLowerCase();
-   
+
     return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
+      contact.name.includes(normalizedFilter)
+      // contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
 
-  const deleteContact = oldContactId => {
-    setContacts(prevContacts =>
-      prevContacts.filter(contact => contact.id !== oldContactId)
-    );
-  };
+  // const deleteContact = oldContactId => {
+  //   setContacts(prevContacts =>
+  //     prevContacts.filter(contact => contact.id !== oldContactId)
+  //   );
+  // };
 
   const visibleContact = getVisibleContact();
 
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} />
+      {/* <ContactForm onSubmit={addContact} /> */}
+      <ContactForm />
 
       <h2>Contacts</h2>
-      <Filter value={filter} onChange={changeFilter} />
+      {/* <Filter value={filter} onChange={changeFilter} /> */}
+      {/* <Filter value={filter} onChange={changeFilter} /> */}
 
-      <Contacts contacts={visibleContact} onDeleteContact={deleteContact} />
+      {/* <Contacts contacts={visibleContact} onDeleteContact={deleteContact} /> */}
+      <Contacts contacts={visibleContact} />
     </>
   );
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
 
 // class App extends Component {
 //   state = {
