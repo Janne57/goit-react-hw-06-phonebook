@@ -64,13 +64,13 @@ const App = () => {
   // };
 
   const getVisibleContact = () => {
-    const normalizedFilter = filter.toLowerCase();
+    // const normalizedFilter = filter.toLowerCase();
 
-    return contacts.filter(contact =>
-      contact.name.includes(normalizedFilter)
+    // return contacts.filter(contact =>
+    //   contact.name.includes(normalizedFilter)
       // contact.name.toLowerCase().includes(normalizedFilter)
-    );
-    // return contacts;
+    // );
+    return contacts;
 
   };
 
