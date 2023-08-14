@@ -65,9 +65,10 @@ const contacts = useSelector(getContact);
           id: nanoid(), 
           // name,
           // number,
-          name,
-          number,
+          name: evt.currentTarget.elements.name.value,
+          number: evt.currentTarget.elements.number.value,
         };
+        console.log('contact contacForms', contact);
 
         if (contacts.find(
                 contact => contact.name.toLowerCase() === name.toLowerCase()
@@ -79,7 +80,7 @@ const contacts = useSelector(getContact);
 // dispatch(addContact(evt.currentTarget.value))
 // console.log('evt.currentTarget.value', evt.currentTarget.name.value)
 // console.log('evt.currentTarget.value', evt.currentTarget.number.value)
-console.log('contact contacForms', contact);
+
 
               // setContacts([...contacts, contact]);
             }
