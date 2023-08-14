@@ -19,7 +19,7 @@ const App = () => {
   // const dispatch = useDispatch();
   // const contacts = useSelector(initialContacts);
   const contacts = useSelector(getContact);
-  const filter = useSelector(getFilter);
+  // const filter = useSelector(getFilter);
   // const [contacts, setContacts] = useState(() => {
   //   return (
   //     // JSON.parse(localStorage.getItem('contacts') || initialContacts) ?? []
