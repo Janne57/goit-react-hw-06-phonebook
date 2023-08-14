@@ -3,7 +3,7 @@ import Contacts from './/Contacts/Contacts.js';
 import ContactForm from './ContactForm/ContactForm.js';
 // import Filter from './Filter/Filter.js';
 // import { nanoid } from 'nanoid';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { addContact } from './redux/contactSlice.js';
 import { getContact } from './redux/selectors';
 import { getFilter } from './redux/selectors';
@@ -16,7 +16,7 @@ import { getFilter } from './redux/selectors';
 // ];
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const contacts = useSelector(initialContacts);
   const contacts = useSelector(getContact);
   const filter = useSelector(getFilter);
