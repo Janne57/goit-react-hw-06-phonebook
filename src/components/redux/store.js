@@ -14,8 +14,8 @@ import {
   } from "redux-persist";
   
   import { configureStore } from "@reduxjs/toolkit";
-  // import  contactsReducer from './contactSlice';
-  import contactSlice from './contactSlice.js';
+  import  contactsReducer from './contactSlice';
+  // import contactSlice from './contactSlice.js';
 
 // export default configureStore({
 //   reducer: {
@@ -29,7 +29,7 @@ const persistConfig = {
     storage,
   }
   
-  const persistedReducer = persistReducer(persistConfig, contactSlice)
+  const persistedReducer = persistReducer(persistConfig, contactsReducer)
   
   export const store = configureStore({
     reducer: persistedReducer,

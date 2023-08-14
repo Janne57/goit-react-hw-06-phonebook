@@ -3,9 +3,9 @@ import Contacts from './/Contacts/Contacts.js';
 import ContactForm from './ContactForm/ContactForm.js';
 // import Filter from './Filter/Filter.js';
 // import { nanoid } from 'nanoid';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // import { addContact } from './redux/contactSlice.js';
-import { getContact } from './redux/selectors';
+// import { getContact } from './redux/selectors';
 // import { getFilter } from './redux/selectors';
 
 // const initialContacts = [
@@ -18,7 +18,7 @@ import { getContact } from './redux/selectors';
 const App = () => {
   // const dispatch = useDispatch();
   // const contacts = useSelector(initialContacts);
-  const contacts = useSelector(getContact);
+  // const contacts = useSelector(getContact);
   // const filter = useSelector(getFilter);
   // const [contacts, setContacts] = useState(() => {
   //   return (
@@ -26,7 +26,7 @@ const App = () => {
   //     dispatch(addContact(JSON.parse(localStorage.getItem('contacts')) ?? []))
   //   );
   // });
-  console.log('contacts', contacts);
+  // console.log('contacts', contacts);
 
   // const [filter, setFilter] = useState('');
   // useEffect(() => {
@@ -63,16 +63,16 @@ const App = () => {
   //   setFilter(evt.currentTarget.value);
   // };
 
-  const getVisibleContact = () => {
-    // const normalizedFilter = filter.toLowerCase();
+  // const getVisibleContact = () => {
+  //   const normalizedFilter = filter.toLowerCase();
 
-    // return contacts.filter(contact =>
-    //   contact.name.includes(normalizedFilter)
-      // contact.name.toLowerCase().includes(normalizedFilter)
-    // );
-    return contacts;
+  //   return contacts.filter(contact =>
+  //     // contact.name.includes(normalizedFilter)
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  //   // return contacts;
 
-  };
+  // };
 
   // // const deleteContact = oldContactId => {
   // //   setContacts(prevContacts =>
@@ -80,7 +80,7 @@ const App = () => {
   // //   );
   // // };
 
-  const visibleContact = getVisibleContact();
+  // const visibleContact = getVisibleContact();
 
   return (
     <>
@@ -93,7 +93,7 @@ const App = () => {
       {/* <Filter value={filter} onChange={changeFilter} /> */}
 
       {/* <Contacts contacts={visibleContact} onDeleteContact={deleteContact} /> */}
-      <Contacts contacts={visibleContact} />
+      <Contacts />
     </>
   );
 };
